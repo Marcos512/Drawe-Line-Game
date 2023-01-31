@@ -23,16 +23,14 @@ public class Game : MonoBehaviour
     [SerializeField]
     private AudioSource _winAudio;
 
-    public static int StarsCollect; // переделать на ивенты
+    public static int ItemsCollect; // переделать на ивенты
 
     private Status _lastStatus;
 
     private void Awake()
     {
-        //var AllRigidbodies = FindObjectsOfType<Rigidbody2D>().ToList();
-        //_rigidbodies.AddRange(AllRigidbodies);
         ToggleSimulate(false);
-        StarsCollect = 0;
+        ItemsCollect = 0;
     }
 
     private void Update()
@@ -85,7 +83,7 @@ public class Game : MonoBehaviour
     {
         if (GameManager.Instance)
         {
-            GameManager.Instance.Save(StarsCollect);
+            GameManager.Instance.Save(ItemsCollect);
         }
     }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StarCollect : MonoBehaviour
+public class ItemCollect : MonoBehaviour
 {
     [SerializeField]
     private ParticleSystem _effect;
@@ -23,7 +23,7 @@ public class StarCollect : MonoBehaviour
             _effect.Play();
             _sprite.SetActive(false);
             _activ = true;
-            Game.StarsCollect++;
+            Game.ItemsCollect++;
             _audio.Play();
             Destroy(gameObject, 5);
         }

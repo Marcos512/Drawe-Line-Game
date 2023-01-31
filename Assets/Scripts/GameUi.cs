@@ -23,7 +23,7 @@ public class GameUi : MonoBehaviour
 
     public void ShowWinForm()
     {
-        int collectStars = Game.StarsCollect;
+        int collectStars = Game.ItemsCollect;
         if (collectStars > 0)
         {
             var stars = _winForm.GetComponentsInChildren<Image>()
