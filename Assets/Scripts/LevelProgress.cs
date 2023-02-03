@@ -5,11 +5,11 @@ public class LevelProgress
 {
     public bool LevelCompleted;
 
-    public int CollectStars;
+    public int CollectItems;
 
-    public LevelProgress(bool levelCompleted = false, int collectStars = 0)
+    public LevelProgress(bool levelCompleted = false, int collectItems = 0)
     {
         LevelCompleted = levelCompleted;
-        CollectStars = collectStars;
+        CollectItems = collectItems;
     }
 }

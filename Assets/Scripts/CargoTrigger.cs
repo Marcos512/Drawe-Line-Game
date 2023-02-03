@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldTrigger : MonoBehaviour
+public class CargoTrigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {

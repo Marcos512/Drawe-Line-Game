@@ -3,17 +3,23 @@ using UnityEngine;
 
 public class DrawLine : MonoBehaviour
 {
-    private LineRenderer _lineRenderer;
-
-    private EdgeCollider2D _edgeCollider;
-
-    private List<Vector2> _linePath;
-
     [SerializeField]
     private float _minDistPoint;
 
     [SerializeField]
     private GameObject _linePrefab;
+
+    [SerializeField]
+    private bool _oneLineDrawMod;
+
+    [SerializeField, Tooltip("Ќомер сло€ где нельз€ рисовать линию")]
+    private int _layerMask;
+
+    private LineRenderer _lineRenderer;
+
+    private EdgeCollider2D _edgeCollider;
+
+    private List<Vector2> _linePath;
 
     private GameObject _line;
 
@@ -23,12 +29,6 @@ public class DrawLine : MonoBehaviour
     public bool LineStartDraw { get => _lineStartDraw; }
     private bool _lineStartDraw = false;
     private bool _lineReady = false;
-
-    [SerializeField]
-    private bool _oneLineDrawMod;
-
-    [SerializeField, Tooltip("Ќомер сло€ где не работает рисование линии")]//изменить
-    private int _layerMask;
 
 
     private void Initialaze(GameObject line)
@@ -52,7 +52,6 @@ public class DrawLine : MonoBehaviour
 
     public void StartDrawLine(Vector2 startPoint)
     {
-
         _line = Instantiate(_linePrefab);
         Initialaze(_line);
         AddNextPoint(startPoint);
@@ -62,7 +61,6 @@ public class DrawLine : MonoBehaviour
     {
         if (PointerOnDrawZone(_layerMask, out RaycastHit2D[] hit))
         {
-
             var nextPoint = hit[0].point;
             var direction = nextPoint - _lastPoint;
             if (_direction != direction && Vector3.Distance(_lastPoint.Value, nextPoint) >= _minDistPoint)
@@ -98,6 +96,7 @@ public class DrawLine : MonoBehaviour
             _lineReady = true;
         return true;
     }
+
     private bool PointerOnDrawZone(LayerMask DontDrawlayer, out RaycastHit2D[] hits)
     {
         var ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);

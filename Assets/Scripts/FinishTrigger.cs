@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FinishTrigger : MonoBehaviour
 {
-    [SerializeField]
-    private string _aimTag;
-
     [SerializeField, Tooltip("Задержка перед остановкой цели")]
     private float _StopDelay;
 
@@ -16,7 +11,7 @@ public class FinishTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == _aimTag)
+        if (collision.GetComponent<Cart>())
         {
             Invoke(nameof(Finish), _StopDelay);
             _aim = collision.gameObject;

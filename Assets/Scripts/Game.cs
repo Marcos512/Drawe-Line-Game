@@ -8,22 +8,16 @@ public class Game : MonoBehaviour
     public static event Action WinAction;
     public static event Action LoseAction;
 
-    [Header("Scripts")]
     [SerializeField]
     private GameStatus _gameStatus;
 
     [SerializeField]
     private DrawLine _drawLine;
 
-    [Header("Ne scripts")]
-
     [SerializeField]
     private List<Rigidbody2D> _rigidbodies;
 
-    [SerializeField]
-    private AudioSource _winAudio;
-
-    public static int ItemsCollect; // переделать на ивенты
+    public static int ItemsCollect;
 
     private Status _lastStatus;
 
@@ -74,7 +68,6 @@ public class Game : MonoBehaviour
     {
         ToggleSimulate(false);
         WinAction?.Invoke();
-        _winAudio.Play();
 
         SaveProgress();
     }
@@ -87,7 +80,7 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void StartSimulation()
+    private void StartSimulation()
     {
         ToggleSimulate(true);
     }

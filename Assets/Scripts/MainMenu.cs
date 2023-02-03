@@ -1,8 +1,8 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -16,7 +16,18 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject _buttonPrefab;
 
-    List<GameObject> buttons = new List<GameObject>();
+    [SerializeField]
+    private Toggle _soundToggle;
+
+    private List<GameObject> _buttons = new List<GameObject>();
+
+    private void Awake()
+    {
+        if (GameManager.Instance)
+        {
+            _soundToggle.isOn = GameManager.Instance.MuteSound;
+        }
+    }
 
     public void Play()
     {
@@ -25,50 +36,65 @@ public class MainMenu : MonoBehaviour
             levels = GameManager.Instance.GetLevelProgress();
         }
 
-        if (buttons.Count > 0)
+        if (_buttons.Count > 0)
             ClearButtons();
 
-        int i = 0;
+        int i = 1;
         bool lastComplit = true;
-        foreach(var level in levels.Skip(1))
+        foreach (var level in levels.Skip(1))
         {
-            var button = Instantiate(_buttonPrefab);
-            button.transform.SetParent(_buttonsGrid.transform);
-            button.transform.localScale = Vector3.one;
-            button.name += ++i;
-            var but = button.GetComponent<Button>();
-            but.interactable = lastComplit;
-            int num = i;
-            but.onClick.AddListener(() => LoadLevel(num));
-            var text = button.GetComponentInChildren<TextMeshProUGUI>();
-            text.text = i.ToString();
-            var StarImages = button.GetComponentsInChildren<Image>();
-            StarColor(level.CollectStars,StarImages);
-            buttons.Add(button);
-            lastComplit = level.LevelCompleted; 
+            InitNewButton(i++, lastComplit, level);
+            lastComplit = level.LevelCompleted;
         }
     }
 
-    private void StarColor(int activStars, Image[] stars)
+    private void InitNewButton(int i, bool interactable, LevelProgress level)
     {
-        int i = activStars;
-        for (; i>0; i--)
+        var levelButton = Instantiate(_buttonPrefab);
+        levelButton.transform.SetParent(_buttonsGrid.transform);
+        levelButton.transform.localScale = Vector3.one;
+        levelButton.name += i;
+
+        var button = levelButton.GetComponent<Button>();
+        button.interactable = interactable;
+        button.onClick.AddListener(() => LoadLevel(i));
+
+        var text = levelButton.GetComponentInChildren<TextMeshProUGUI>();
+        text.text = i.ToString();
+
+        var ItemImages = levelButton.GetComponentsInChildren<Image>();
+        ChangeItemColor(level.CollectItems, ItemImages);
+
+        _buttons.Add(levelButton);
+    }
+
+    private void ChangeItemColor(int collectItems, Image[] item)
+    {
+        for (int i = collectItems; i > 0; i--)
         {
-            stars[i].color = Color.white;
+            item[i].color = Color.white;
         }
     }
 
     private void ClearButtons()
     {
-        foreach(var button in buttons)
+        foreach (var button in _buttons)
         {
             Destroy(button);
         }
-        buttons.Clear();
+        _buttons.Clear();
     }
 
     public void LoadLevel(int level)
     {
-            SceneManager.LoadScene(level);
+        SceneManager.LoadScene(level);
+    }
+
+    public void SoundSwithcer(bool swither)
+    {
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.MuteSound = swither;
+        }
     }
 }

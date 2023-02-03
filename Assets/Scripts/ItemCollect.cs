@@ -9,16 +9,13 @@ public class ItemCollect : MonoBehaviour
     private GameObject _sprite;
 
     [SerializeField]
-    private string _aimTag;
-
-    [SerializeField]
     private AudioSource _audio;
 
     private bool _activ = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == _aimTag && !_activ)
+        if ((collision.GetComponent<Cart>() || collision.GetComponent<CargoTrigger>()) && !_activ)
         {
             _effect.Play();
             _sprite.SetActive(false);

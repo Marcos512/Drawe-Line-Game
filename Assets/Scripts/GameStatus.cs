@@ -5,7 +5,7 @@ public class GameStatus : MonoBehaviour
     [SerializeField]
     private FinishTrigger[] _finishTriggers;
 
-    private bool GameStart = false;
+    private bool _gameStart = false;
     public static bool OnLoseTrigger = false;
 
     private void Awake()
@@ -15,7 +15,7 @@ public class GameStatus : MonoBehaviour
 
     public Status UpdateStatus()
     {
-        if (!GameStart)
+        if (!_gameStart)
             return Status.Prepare;
         else
         {
@@ -33,7 +33,7 @@ public class GameStatus : MonoBehaviour
 
     public void StartGame()
     {
-        GameStart = true;
+        _gameStart = true;
     }
 
     private bool ChekFinishTriggers()

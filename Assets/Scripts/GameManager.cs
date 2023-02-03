@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 
     private SaveLavelData _saveLevelData = new SaveLavelData();
 
+    public bool MuteSound = false;
+
     private void Awake()
     {
         if (Instance != null)
@@ -27,5 +29,4 @@ public class GameManager : MonoBehaviour
 
     public LevelProgress[] GetLevelProgress() =>
         _saveLevelData.levelsProgress;
-
 }

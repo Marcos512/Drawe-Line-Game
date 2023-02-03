@@ -19,13 +19,13 @@ public class SaveLavelData
         }
     }
 
-    public void SaveLevelProgress(int CollectStars)
+    public void SaveLevelProgress(int CollectItems)
     {
         var index = SceneManager.GetActiveScene().buildIndex;
         if (!levelsProgress[index].LevelCompleted
-            || levelsProgress[index].CollectStars < CollectStars)
+            || levelsProgress[index].CollectItems < CollectItems)
         {
-            levelsProgress[index] = new LevelProgress(true, CollectStars);
+            levelsProgress[index] = new LevelProgress(true, CollectItems);
         }
         Save();
     }
