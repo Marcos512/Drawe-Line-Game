@@ -6,37 +6,27 @@ public class LevelSound : MonoBehaviour
     private AudioSource _winSound;
 
     [SerializeField]
+    private AudioSource _winVoice;
+
+    [SerializeField]
     private AudioSource _loseSound;
 
-    private bool _mute = false;
+    [SerializeField]
+    private AudioSource _loseVoice;
 
     private void OnEnable()
     {
-        if (GameManager.Instance)
-        {
-            _mute = GameManager.Instance.MuteSound;
-        }
-        MuteAudio(_mute);
-
         Game.WinAction += _winSound.Play;
+        Game.WinAction += _winVoice.Play;
         Game.LoseAction += _loseSound.Play;
+        Game.LoseAction += _loseVoice.Play;
     }
 
     private void OnDisable()
     {
         Game.WinAction -= _winSound.Play;
+        Game.WinAction -= _winVoice.Play;
         Game.LoseAction -= _loseSound.Play;
-    }
-
-    private void MuteAudio(bool switcher)
-    {
-        if(switcher)
-        {
-            AudioListener.volume = 0f;
-        }
-        else
-        {
-            AudioListener.volume = 1f;
-        }
+        Game.LoseAction -= _loseVoice.Play;
     }
 }

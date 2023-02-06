@@ -29,6 +29,19 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void MuteAudio(bool switcher)
+    {
+        if (switcher)
+        {
+            AudioListener.volume = 0f;
+        }
+        else
+        {
+            AudioListener.volume = 1f;
+        }
+        GameManager.Instance.MuteSound = switcher;
+    }
+
     public void Play()
     {
         if (GameManager.Instance)
