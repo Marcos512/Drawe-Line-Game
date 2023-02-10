@@ -17,14 +17,11 @@ public class Game : MonoBehaviour
     [SerializeField]
     private List<Rigidbody2D> _rigidbodies;
 
-    public static int ItemsCollect;
-
     private Status _lastStatus;
 
     private void Awake()
     {
         ToggleSimulate(false);
-        ItemsCollect = 0;
     }
 
     private void Update()
@@ -76,7 +73,8 @@ public class Game : MonoBehaviour
     {
         if (GameManager.Instance)
         {
-            GameManager.Instance.Save(ItemsCollect);
+            int items = ItemCollecter.ItemsCount;
+            GameManager.Instance.Save(items);
         }
     }
 

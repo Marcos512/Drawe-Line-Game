@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class FinishTrigger : MonoBehaviour
@@ -7,20 +8,18 @@ public class FinishTrigger : MonoBehaviour
 
     public bool AimFinished = false;
 
-    private GameObject _aim;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Cart>())
+        if (collision.TryGetComponent(out Cart cart))
         {
-            Invoke(nameof(Finish), _StopDelay);
-            _aim = collision.gameObject;
+            StartCoroutine(StopDelay(_StopDelay, cart));
         }
     }
 
-    private void Finish()
-    {
+    private IEnumerator StopDelay(float delay, Cart cart)
+    {   cart.FreezPosition();
+        yield return new WaitForSeconds(delay);
         AimFinished = true;
-        _aim.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+        
     }
 }
