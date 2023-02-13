@@ -6,6 +6,7 @@ public class GameStatus : MonoBehaviour
     private FinishTrigger[] _finishTriggers;
 
     private bool _gameStart = false;
+
     public static bool OnLoseTrigger = false;
 
     private void Awake()
@@ -21,12 +22,11 @@ public class GameStatus : MonoBehaviour
         {
             if (ChekFinishTriggers())
                 return Status.Win;
-
-            if (OnLoseTrigger)
+            else if (OnLoseTrigger)
             {
                 return Status.Lose;
             }
-            
+
             return Status.Play;
         }
     }

@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class DrawLine : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, Tooltip("ћинимальное рассто€ние между точками")]
     private float _minDistPoint;
-
-    [SerializeField]
-    private GameObject _linePrefab;
 
     [SerializeField]
     private bool _oneLineDrawMod;
 
     [SerializeField, Tooltip("Ќомер сло€ где нельз€ рисовать линию")]
     private int _layerMask;
+
+    [SerializeField]
+    private GameObject _linePrefab;
 
     private LineRenderer _lineRenderer;
 

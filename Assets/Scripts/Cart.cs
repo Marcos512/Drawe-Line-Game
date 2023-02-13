@@ -15,24 +15,16 @@ public class Cart : MonoBehaviour
     {
         if (_onGraund)
             _cartRigidbody2D.AddRelativeForce(_forceVector);
-        //  _cartRigidbody2D.AddForce(_forceVector);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         _onGraund = true;
-        Debug.Log("stay");
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        _onGraund = true;
-        Debug.Log("On");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         _onGraund = false;
-        Debug.Log("Off");
     }
 
     public void FreezPosition()

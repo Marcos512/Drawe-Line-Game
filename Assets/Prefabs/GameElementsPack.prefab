@@ -1319,7 +1319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 32967226025948069}
   m_Layer: 0
-  m_Name: LoseAndDontDrawZone
+  m_Name: LoseTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3630,6 +3630,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Up
       objectReference: {fileID: 0}
+    - target: {fileID: 5969423116982674488, guid: 967a41422d986e0459ac011c2b83d21f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5969423116982674490, guid: 967a41422d986e0459ac011c2b83d21f, type: 3}
       propertyPath: m_Color.a
       value: 0.12941177
@@ -3785,6 +3789,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right
       objectReference: {fileID: 0}
+    - target: {fileID: 5969423116982674488, guid: 967a41422d986e0459ac011c2b83d21f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5969423116982674490, guid: 967a41422d986e0459ac011c2b83d21f, type: 3}
       propertyPath: m_Color.a
       value: 0.12941177
@@ -3925,6 +3933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Down
       objectReference: {fileID: 0}
+    - target: {fileID: 5969423116982674488, guid: 967a41422d986e0459ac011c2b83d21f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5969423116982674490, guid: 967a41422d986e0459ac011c2b83d21f, type: 3}
       propertyPath: m_Color.a
       value: 0.12941177
@@ -4004,6 +4016,10 @@ PrefabInstance:
     - target: {fileID: 5969423116982674488, guid: 967a41422d986e0459ac011c2b83d21f, type: 3}
       propertyPath: m_Name
       value: Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969423116982674488, guid: 967a41422d986e0459ac011c2b83d21f, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5969423116982674490, guid: 967a41422d986e0459ac011c2b83d21f, type: 3}
       propertyPath: m_Color.a

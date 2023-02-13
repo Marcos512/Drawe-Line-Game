@@ -418,6 +418,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: -0.06900002
       objectReference: {fileID: 0}
+    - target: {fileID: 4510113218598150752, guid: 9fd0bef414b2688448511cfe6631a7f2, type: 3}
+      propertyPath: _forceVector.x
+      value: -70
+      objectReference: {fileID: 0}
     - target: {fileID: 7852250308648826304, guid: 9fd0bef414b2688448511cfe6631a7f2, type: 3}
       propertyPath: forceVector.x
       value: -70

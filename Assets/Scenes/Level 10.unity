@@ -426,6 +426,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: -0.069000125
       objectReference: {fileID: 0}
+    - target: {fileID: 4510113218598150752, guid: 9fd0bef414b2688448511cfe6631a7f2, type: 3}
+      propertyPath: _forceVector.x
+      value: -70
+      objectReference: {fileID: 0}
     - target: {fileID: 7852250308648826304, guid: 9fd0bef414b2688448511cfe6631a7f2, type: 3}
       propertyPath: forceVector.x
       value: -70
@@ -1785,6 +1789,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3291667274660983775, guid: dc2d1dc1243068c4aa8d419ea27303d6, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.068999924
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291667274660983843, guid: dc2d1dc1243068c4aa8d419ea27303d6, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.068999924
+      objectReference: {fileID: 0}
     - target: {fileID: 3293779090405335928, guid: dc2d1dc1243068c4aa8d419ea27303d6, type: 3}
       propertyPath: m_Name
       value: GameElements
